@@ -1,4 +1,4 @@
-# 1000 Families Rich – GEMS Personality Quiz
+# Teleza Reeves GEMS Quiz – GEMS Personality Quiz
 
 A luxury, mobile-friendly personality quiz built for the **1000 Families Rich** ecosystem.
 
@@ -69,5 +69,5 @@ It is not financial, legal, or medical advice.
 
 ---
 
-Created and maintained by Teleza Reeves for 1000 Families Rich.
+Created and maintained by Teleza Reeves
 
