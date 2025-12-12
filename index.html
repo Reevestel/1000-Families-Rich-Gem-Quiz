@@ -2,23 +2,28 @@
 <html lang="en">
 <head>
   <meta charset="utf-8">
-  <title>1000 Families Rich — GEMS Quiz</title>
+  <title>Teleza Reeves — GEMS Quiz</title>
   <meta name="viewport" content="width=device-width,initial-scale=1">
   <style>
-    :root {
-      --bg: #050505;
-      --bg-card: #101010;
-      --fg: #ffffff;
-      --muted: #bfbfbf;
-      --gold: #d4af37;
-      --gold-soft: #f3d26b;
-      --border-soft: rgba(255,255,255,0.18);
+  :root {
+  /* ===== Teleza Reeves Brand ===== */
+  --bg: #0B1020;
+  --bg-card: #121A33;
+  --fg: #F6F7FB;
+  --muted: #A7B0C0;
 
-      /* gem colors */
-      --sapphire: #2bb3ff;
-      --ruby: #ff3b3b;
-      --pearl: #ffd7f2;
-      --emerald: #30d985;
+  --primary: #7C5CFF;      /* violet */
+  --primary-soft: #B7A7FF; /* soft violet */
+  --accent: #00D4FF;       /* aqua glow */
+  --border-soft: rgba(246,247,251,0.18);
+
+  /* Gem colors (keep these) */
+  --sapphire: #2bb3ff;
+  --ruby: #ff3b3b;
+  --pearl: #ffd7f2;
+  --emerald: #30d985;
+}
+    
     }
 
     * { box-sizing: border-box; }
@@ -38,7 +43,7 @@
       flex-direction: column;
     }
 
-    header {
+    header { 
       padding: 20px 16px 14px;
       border-bottom: 1px solid rgba(255,255,255,0.12);
       text-align: center;
@@ -54,7 +59,7 @@
       font-size: 14px;
       letter-spacing: 1.4px;
       text-transform: uppercase;
-      background: linear-gradient(90deg, var(--gold), var(--gold-soft));
+      background: linear-gradient(90deg, var(--primary), var(--primary-soft));
       -webkit-background-clip: text;
       background-clip: text;
       color: transparent;
@@ -124,7 +129,7 @@
     }
 
     .answer input {
-      accent-color: var(--gold);
+      accent-color: var(--primary);
       transform: scale(1.1);
     }
 
@@ -133,7 +138,7 @@
     }
 
     .answer.selected {
-      border-color: var(--gold-soft);
+      border-color: var(--primary-soft);
       background: radial-gradient(circle at left, rgba(243,210,107,0.2), rgba(0,0,0,0.6));
       transform: translateY(-1px);
     }
@@ -157,7 +162,7 @@
     }
 
     .btn-primary {
-      background: linear-gradient(90deg, var(--gold), var(--gold-soft));
+      background: linear-gradient(90deg, var(--primary), var(--primary-soft));
       color: #111;
     }
 
@@ -192,7 +197,7 @@
       height: 100%;
       width: 0;
       border-radius: 999px;
-      background: linear-gradient(90deg, var(--gold), var(--gold-soft));
+      background: linear-gradient(90deg, var(--primary), var(--primary-soft));
       transition: width 0.18s ease-out;
     }
 
@@ -242,7 +247,7 @@
       width: 10px;
       height: 10px;
       border-radius: 999px;
-      background: var(--gold);
+      background: var(--primary);
     }
 
     .bars {
@@ -383,7 +388,7 @@
 </head>
 <body>
 <header>
-  <div class="brand">1000 Families Rich</div>
+  <div class="brand">Teleza Reeves</div>
   <h1>GEMS Personality Quiz</h1>
   <div class="sub">Discover your dominant money-making personality: Sapphire • Ruby • Pearl • Emerald</div>
 </header>
@@ -391,7 +396,7 @@
 <div class="wrap">
   <div class="card card--glow">
     <div class="meta">
-      This quiz is designed for 1000 Families Rich — to help you understand how you naturally move in money,
+      This quiz is designed for Teleza Reeves — to help you understand how you naturally move in money,
       business, and community. Choose the answer that sounds most like you <b>most of the time</b>.
     </div>
   </div>
@@ -430,7 +435,6 @@
           </div>
           <div class="profile-row">
             <input type="text" id="displayName" placeholder="Your name (optional)">
-            <input type="text" id="brandTag" placeholder="@handle or tagline (optional)">
             <input type="file" id="photoInput" accept="image/*">
             <button class="btn-primary" id="makeCard" type="button">Generate My Share Card</button>
           </div>
@@ -447,7 +451,7 @@
 
   <div class="footer">
     <span class="badge-legal">For personal insight only</span><br>
-    Not medical, legal, or financial advice. © 1000 Families Rich
+    Not medical, legal, or financial advice. © Teleza Reeves
   </div>
 </div>
 
@@ -462,8 +466,8 @@
 
   const APP_CONFIG = {
     brand: {
-      primary: "#d4af37",
-      primarySoft: "#f3d26b",
+      primary: "var(--primary)",
+      primarySoft: "var(--primary-soft)",
       background: "#050505",
       fontFamily: "system-ui, -apple-system, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif"
     },
@@ -682,7 +686,7 @@
       }
     },
     quiz: {
-      title: "1000 Families Rich — GEMS Quiz",
+      title: "Teleza Reeves — GEMS Quiz",
       questions: [] // will fill below
     }
   };
@@ -936,7 +940,7 @@
   }
 
   function colorForGem(key) {
-    return APP_CONFIG.gems[key]?.color || "var(--gold)";
+    return APP_CONFIG.gems[key]?.color || "var(--primary)";
   }
 
   function renderResults() {
@@ -952,7 +956,7 @@
         <div class="bar-row">
           <div class="bar-label">${label}</div>
           <div class="bar-shell">
-            <div class="bar-fill" style="width:${value}%;background:linear-gradient(90deg, ${getComputedStyle(document.documentElement).getPropertyValue("--gold")}, ${getComputedStyle(document.documentElement).getPropertyValue("--gold-soft")});"></div>
+            <div class="bar-fill" style="width:${value}%;background:linear-gradient(90deg, ${getComputedStyle(document.documentElement).getPropertyValue("--primary")}, ${getComputedStyle(document.documentElement).getPropertyValue("--primary-soft")});"></div>
           </div>
           <div class="bar-val">${value}%</div>
         </div>
@@ -1118,7 +1122,7 @@
     // Brand text
     ctx.fillStyle = "#ffffff";
     ctx.font = "900 52px " + APP_CONFIG.brand.fontFamily;
-    ctx.fillText("1000 FAMILIES RICH", CX + 40, CY + 80);
+    ctx.fillText("Teleza Reeves", CX + 40, CY + 80);
 
     // Top GEM
     ctx.font = "700 34px " + APP_CONFIG.brand.fontFamily;
@@ -1185,8 +1189,8 @@
       // Fill
       const w = Math.max(6, Math.round((barW * value) / 100));
       const barGrad = ctx.createLinearGradient(barX, y - 22, barX + w, y - 22);
-      barGrad.addColorStop(0, "#d4af37");
-      barGrad.addColorStop(1, "#f3d26b");
+      barGrad.addColorStop(0, "var(--primary)");
+      barGrad.addColorStop(1, "var(--primary-soft)");
       ctx.fillStyle = barGrad;
       roundRect(ctx, barX, y - 22, w, barH, 12);
       ctx.fill();
@@ -1213,7 +1217,7 @@
 const nameVal = (document.getElementById("displayName").value || "").trim();
 
 // --- SAFE FOOTER ZONE (prevents IG overlay + clipping) ---
-const footerLineY = H - 120;        // move the gold line UP
+const footerLineY = H - 120;        // move the primary line UP
 const footerTextY = footerLineY - 12;
 const nameY = footerLineY - 44;      // name sits above the line
 
@@ -1223,8 +1227,8 @@ if (nameVal) {
   ctx.fillText(nameVal, CX + 40, nameY);
 }
 
-// Gold footer line
-ctx.strokeStyle = "#d4af37";
+// primary footer line
+ctx.strokeStyle = "var(--primary)";
 ctx.lineWidth = 3;
 ctx.beginPath();
 ctx.moveTo(CX + 40, footerLineY);
@@ -1233,8 +1237,8 @@ ctx.stroke();
 
 // Brand text (inside safe zone)
 ctx.font = "800 22px " + APP_CONFIG.brand.fontFamily;
-ctx.fillStyle = "#d4af37";
-ctx.fillText("1000 FAMILIES RICH • GEMS PERSONALITY", CX + 48, footerTextY);
+ctx.fillStyle = "var(--primary)";
+ctx.fillText("Teleza Reeves • GEMS PERSONALITY", CX + 48, footerTextY);
 
 
     return canvas;
