@@ -1076,35 +1076,46 @@
       ctx.fillText("•", CX + 44, ty);
       ty = wrapText(ctx, t, CX + 64, ty, CW - 88, 30, 3) + 8;
     });
+// ---------- Bottom area (NO OVERLAP) ----------
+const nameVal = (document.getElementById("displayName").value || "").trim();
+const tagVal  = (document.getElementById("brandTag").value || "").trim();
 
-    // Bottom identity (brandTag spacing fixed: explicit line separation + safe trim)
-    const nameVal = (document.getElementById("displayName").value || "").trim();
-    const tagVal = (document.getElementById("brandTag").value || "").trim();
-    const bottomY = H - 150;
+const padBottom = 28;   // space from bottom edge
+const padLeft   = 44;   // left padding inside card
+const gap       = 14;   // spacing between blocks
 
-    if (nameVal){
-      ctx.font = "900 30px " + APP_CONFIG.brand.fontFamily;
-      ctx.fillStyle = "#ffffff";
-      ctx.fillText(nameVal, CX + 44, bottomY);
-    }
-    if (tagVal){
-      ctx.font = "700 24px " + APP_CONFIG.brand.fontFamily;
-      ctx.fillStyle = "#d0d0d0";
-      ctx.fillText(tagVal, CX + 44, bottomY + 34);
-    }
+// 1) Footer rule sits near the bottom
+const lineY = H - padBottom;
 
-    // Bottom rule + footer text
-    const lineY = H - 64;
-    ctx.strokeStyle = APP_CONFIG.brand.primary;
-    ctx.lineWidth = 3;
-    ctx.beginPath();
-    ctx.moveTo(CX + 44, lineY);
-    ctx.lineTo(CX + CW - 44, lineY);
-    ctx.stroke();
+ctx.strokeStyle = APP_CONFIG.brand.primary;
+ctx.lineWidth = 3;
+ctx.beginPath();
+ctx.moveTo(CX + padLeft, lineY);
+ctx.lineTo(CX + CW - padLeft, lineY);
+ctx.stroke();
 
-    ctx.font = "900 22px " + APP_CONFIG.brand.fontFamily;
-    ctx.fillStyle = APP_CONFIG.brand.primary;
-    ctx.fillText("TELEZA REEVES • GEMS PERSONALITY", CX + 52, lineY - 14);
+// 2) Footer text goes ABOVE the rule
+ctx.font = "900 22px " + APP_CONFIG.brand.fontFamily;
+ctx.fillStyle = APP_CONFIG.brand.primary;
+const footerTextY = lineY - 18;
+ctx.fillText("TELEZA REEVES • GEMS PERSONALITY", CX + padLeft + 8, footerTextY);
+
+// 3) Identity block goes ABOVE the footer text (so it can never overlap it)
+let y = footerTextY - gap;
+
+if (tagVal) {
+  ctx.font = "700 24px " + APP_CONFIG.brand.fontFamily;
+  ctx.fillStyle = "#d0d0d0";
+  ctx.fillText(tagVal, CX + padLeft, y);
+  y -= 34; // line height for tag
+}
+
+if (nameVal) {
+  ctx.font = "900 30px " + APP_CONFIG.brand.fontFamily;
+  ctx.fillStyle = "#ffffff";
+  ctx.fillText(nameVal, CX + padLeft, y);
+}
+// ---------- End bottom area ----------
 
     return canvas;
   }
