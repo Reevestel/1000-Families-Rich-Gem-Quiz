@@ -69,4 +69,5 @@ It is not financial, legal, or medical advice.
 
 ---
 
-© 1000 Families Rich. All rights reserved.
+Created and maintained by Teleza Reeves for 1000 Families Rich.
+
